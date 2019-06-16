@@ -1,0 +1,11 @@
+mybatis:
+ type-aliases-package: com.demoone.DTO  # 注意：对应实体类的路径
+ configuration.map-underscore-to-camel-case : true
+ configuration:
+  cache-enabled: true
+  aggressive-lazy-loading: true  #延迟加载：使用到相关字段的时候才进行关联表查询
+
+
+
+
+

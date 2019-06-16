@@ -1,0 +1,75 @@
+custom:
+ datasource:
+  names: ds1,ds2
+  ds1:
+   driver-class-name: com.mysql.cj.jdbc.Driver
+   url: jdbc:mysql://xx
+   type: com.alibaba.druid.pool.DruidDataSource
+   username: xx
+   password: xx
+  ds2:
+   driver-class-name: com.mysql.cj.jdbc.Driver
+   url: jdbc:mysql://xx
+   type: com.alibaba.druid.pool.DruidDataSource
+   username: xx
+   password: xx
+server:
+ port: 8085
+logging:
+  config: classpath:log4j2.yml
+  level:
+   root: WARN
+spring:
+ resources:
+  static-locations: file:/home/uftp/static,classpath:/static
+ datasource:
+  name: test
+  url: jdbc:mysql://xx
+  username: xx
+  password: xx
+  # 使用druid数据源
+  type: com.alibaba.druid.pool.DruidDataSource
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  druid:
+    filters: stat,wall
+    maxActive: 10
+    initialSize: 3
+    maxWait: 60000
+    minIdle: 3
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+ thymeleaf:
+  cache: true
+  check-template-location: true
+  enabled: true
+  encoding: utf-8
+  mode: HTML
+  prefix: classpath:/templates/
+  suffix: .html
+  servlet:
+   content-type: text/html
+ servlet:
+  multipart:
+   max-request-size: 100Mb
+   max-file-size: 100Mb
+## 该配置节点为独立的节点
+redis:
+  as
+mybatis:
+ mapper-locations: classpath:/sqlMapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+ type-aliases-package: com.demoone.DTO  # 注意：对应实体类的路径
+ configuration.map-underscore-to-camel-case : true
+ configuration:
+  cache-enabled: true
+  aggressive-lazy-loading: true  #延迟加载：使用到相关字段的时候才进行关联表查询
+
+
+
+
+
